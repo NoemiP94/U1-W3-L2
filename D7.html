@@ -74,11 +74,10 @@
 
     <div id="tableArea"></div>
 
-    <footer>
+    <footer onclick="revealFooterLink">
       <h3>
         DOM Manipulation is super
         <a
-          onclick="revealFooterLink"
           href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
           >AWESOME!</a
         >
@@ -185,8 +184,12 @@
         */
 
       const makeItClickable = function () {
-        const title = document.getElementsByTagName('h1')[0]
-        title.innerText = title.innerText.slice(0, -1)
+        document.querySelector('h1').addEventListener('click', function () {
+          let text = this.innerText
+          if (text.length > 0) {
+            this.innerText = text.slice(0, -1)
+          }
+        })
       }
 
       makeItClickable()
