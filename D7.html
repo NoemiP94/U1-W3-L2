@@ -107,7 +107,7 @@
       addClassToTitle()
 
       /* ESERCIZIO 3
-         Scrivi una funzione per che cambi il testo dei p figli di un div
+         Scrivi una funzione che cambi il testo dei p figli di un div
         */
 
       const changePcontent = function () {
@@ -144,7 +144,7 @@
       addToTheSecond()
 
       /* ESERCIZIO 6 
-         Scrivi una funzione che aggiunga un secondo paragrafo al primo div
+         Scrivi una funzione che aggiunga un paragrafo al primo div
       */
       const addParagraph = function () {
         const secondParagraph = document.querySelector('body > div')
@@ -184,12 +184,8 @@
         */
 
       const makeItClickable = function () {
-        document.querySelector('h1').addEventListener('click', function () {
-          let text = this.innerText
-          if (text.length > 0) {
-            this.innerText = text.slice(0, -1)
-          }
-        })
+        const h1 = document.getElementsByTagName('h1')[0]
+        h1.innerText = h1.innerText.slice(0, -1)
       }
 
       makeItClickable()
@@ -199,12 +195,11 @@
         */
 
       const revealFooterLink = function () {
-        const footerLink = document.getElementsByTagName('footer')[0]
-
-        alert(
-          'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents'
-        )
+        const footerLink = document.querySelector('footer a')[0]
+        const hrefValue = footerLink.getAttribute('href')
+        alert(hrefValue)
       }
+
       revealFooterLink()
 
       /* ESERCIZIO 11 
@@ -320,48 +315,49 @@
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      // const addRow = function () {
-      //   const newRow = document.createElement('tr')
-      //   newRow.appendChild(table1)
+      const addRow = function (img, name, qty, price) {
+        const newTr = document.createElement('tr')
+        const newTd1 = document.createElement('td')
+        const newTd2 = document.createElement('td')
+        const newTd3 = document.createElement('td')
+        const newTd4 = document.createElement('td')
+        const newImg = document.createElement('img')
+        newImg.setAttribute('src', img)
+        newTd1.appendChild(newImg)
+        newTd2.innerText = name
+        newTd3.innerText = qty
+        newTd4.innerText = price
+        newTr.appendChild(newTd2)
+        newTr.appendChild(newTd3)
+        newTr.appendChild(newTd4)
+      }
 
-      //   const ndata1 = document.createElement('td')
-      //   ndata1.setAttribute('src', 'http://placedog.net/200')
-      //   ndata1.appendChild(newRow)
-
-      //   const ndata2 = document.createElement('td')
-      //   ndata2.innerText = 'beautiful dog'
-      //   ndata2.appendChild(newRow)
-
-      //   const ndata3 = document.createElement('td')
-      //   ndata3.innerText = '1'
-      //   ndata3.appendChild(newRow)
-
-      //   const ndata4 = document.createElement('td')
-      //   ndata4.innerText = 'priceless'
-      //   ndata4.appendChild(newRow)
-      // }
-
-      // addRow()
+      addRow()
 
       /* ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
       */
 
-      const hideAllImages = function () {}
+      const hideAllImages = function () {
+        const allImg = document.querySelectorAll('table img')
+        allImg.forEach((img) => {
+          img.style.display = 'none'
+        })
+      }
+
+      hideAllImages()
 
       /* EXTRA ESERCIZIO 15 CONTROLLARE!!!!!
         Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
       */
 
       const changeColorWithRandom = function () {
-        const changeColorH2 = document.getElementById('changeMyColor')
-        const hex = '0123456789ABC'.split('')
-        let color = '#'
-        for (let i = 0; i < 6; i++) {
-          color = color + hex[Math.floor(Math.random() * 13)]
-        }
-        return color
-        changeColorH2.style.randomColor
+        let h2Colored = document.getElementsByTagName('h2')[0]
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16)
+
+        h2Colored.addEventListener('click', function () {
+          h2Colored.style.color = '#' + randomColor
+        })
       }
 
       changeColorWithRandom()
