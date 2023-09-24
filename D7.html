@@ -207,132 +207,90 @@
          La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
       */
 
-      // const generateTable = function () {
-      //   const table1 = document.getElementById('tableArea')
-      //   const newTable = document.createElement('table')
+      const generateTable = function () {
+        const container = document.getElementById('tableArea')
+        const table = document.createElement('table')
+        table.style.width = '100%'
 
-      //   newTable.appendChild(table1)
+        const firsRow = document.createElement('tr')
 
-      //   const row = document.createElement('tr')
-      //   row.appendChild(table1)
+        const thImage = document.createElement('th')
+        thImage.innereText = 'Immagine'
+        const thProduct = document.createElement('th')
+        thProduct.innerText = 'Prodotto'
+        const thQuantity = document.createElement('th')
+        thQuantity.innerText = 'Quantità'
+        const thPrice = document.createElement('th')
+        thPrice.innerText = 'Prezzo'
 
-      //   const data1 = document.createElement('td')
-      //   data1.setAttribute('src', 'http://placekitten.com/200')
-      //   data1.appendChild(row)
+        const images = [
+          'https://m.media-amazon.com/images/I/81yJf4K+L1L._AC_SY450_.jpg',
+          'https://m.media-amazon.com/images/I/61MRTh9xotL._AC_SX679_.jpg',
+          'https://www.tradeinn.com/f/13805/138054505/samsung-smartphone-galaxy-s21-5g-8gb-128gb-6.2.jpg',
+          'https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1661333885.70133010!500x500.png',
+          'https://tomatosmartphone.it/wp-content/uploads/2022/06/EU-IN_Green.png',
+        ]
 
-      //   const data2 = document.createElement('td')
-      //   data2.innerText = 'beautiful cat'
-      //   data2.appendChild(row)
+        firstRow.appendChild(thImage)
+        firstRow.appendChild(thProduct)
+        firstRow.appendChild(thQuantity)
+        firstRow.appendChild(thPrice)
+        table.appendChild(firstRow)
 
-      //   const data3 = document.createElement('td')
-      //   data3.innerText = '1'
-      //   data3.appendChild(row)
+        for (let i = 0; i < images.length; i++) {
+          const newRow = document.createElement('tr')
 
-      //   const data4 = document.createElement('td')
-      //   data4.innerText = 'priceless'
-      //   data4.appendChild(row)
+          const tdImage = document.createElement('td')
+          td.Image.innerHTML = `<img src=${images[i]} alt="smartphone" height="200" />`
+          const tdProduct = document.createElement('td')
+          tdProduct.innerText = 'Smartphone'
+          const tdQuantity = document.createElement('td')
+          tdQuantity.innerText = Math.floor(Math.random() * 50)
+          const tdPrice = document.createElement('td')
+          tdPrice.innerText = Math.floor(Math.random() * 500) + '€'
 
-      //   const row2 = document.createElement('tr')
-      //   row2.appendChild(table1)
+          newRow.appendChild(tdImage)
+          newRow.appendChild(tdProduct)
+          newRow.appendChild(tdQuantity)
+          newRow.appendChild(tdPrice)
+          table.appendChild(newRow)
+        }
+        container.appendChild(table)
+      }
 
-      //   const data5 = document.createElement('td')
-      //   data5.setAttribute('src', 'http://placekitten.com/200')
-      //   data5.appendChild(row2)
-
-      //   const data6 = document.createElement('td')
-      //   data6.innerText = 'beautiful cat'
-      //   data6.appendChild(row2)
-
-      //   const data7 = document.createElement('td')
-      //   data7.innerText = '1'
-      //   data7.appendChild(row2)
-
-      //   const data8 = document.createElement('td')
-      //   data8.innerText = 'priceless'
-      //   data8.appendChild(row2)
-
-      //   const row3 = document.createElement('tr')
-      //   row3.appendChild(table1)
-
-      //   const data9 = document.createElement('td')
-      //   data9.setAttribute('src', 'http://placekitten.com/200')
-      //   data9.appendChild(row3)
-
-      //   const data10 = document.createElement('td')
-      //   data10.innerText = 'beautiful cat'
-      //   data10.appendChild(row3)
-
-      //   const data11 = document.createElement('td')
-      //   data11.innerText = '1'
-      //   data11.appendChild(row3)
-
-      //   const data12 = document.createElement('td')
-      //   data12.innerText = 'priceless'
-      //   data12.appendChild(row3)
-
-      //   const row4 = document.createElement('tr')
-      //   row4.appendChild(table1)
-
-      //   const data13 = document.createElement('td')
-      //   data13.setAttribute('src', 'http://placekitten.com/200')
-      //   data13.appendChild(row4)
-
-      //   const data14 = document.createElement('td')
-      //   data14.innerText = 'beautiful cat'
-      //   data14.appendChild(row4)
-
-      //   const data15 = document.createElement('td')
-      //   data15.innerText = '1'
-      //   data15.appendChild(row4)
-
-      //   const data16 = document.createElement('td')
-      //   data16.innerText = 'priceless'
-      //   data16.appendChild(row4)
-
-      //   const row5 = document.createElement('tr')
-      //   row5.appendChild(table1)
-
-      //   const data17 = document.createElement('td')
-      //   data17.setAttribute('src', 'http://placekitten.com/200')
-      //   data17.appendChild(row5)
-
-      //   const data18 = document.createElement('td')
-      //   data18.innerText = 'beautiful cat'
-      //   data18.appendChild(row5)
-
-      //   const data19 = document.createElement('td')
-      //   data19.innerText = '1'
-      //   data19.appendChild(row5)
-
-      //   const data20 = document.createElement('td')
-      //   data20.innerText = 'priceless'
-      //   data20.appendChild(row5)
-      // }
-
-      // generateTable()
+      generateTable()
 
       /* ESERCIZIO 12
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      const addRow = function (img, name, qty, price) {
-        const newTr = document.createElement('tr')
-        const newTd1 = document.createElement('td')
-        const newTd2 = document.createElement('td')
-        const newTd3 = document.createElement('td')
-        const newTd4 = document.createElement('td')
-        const newImg = document.createElement('img')
-        newImg.setAttribute('src', img)
-        newTd1.appendChild(newImg)
-        newTd2.innerText = name
-        newTd3.innerText = qty
-        newTd4.innerText = price
-        newTr.appendChild(newTd2)
-        newTr.appendChild(newTd3)
-        newTr.appendChild(newTd4)
+      const addRow = function (imgUrl, productName, quantity, price) {
+        const table = document.querySelector('table')
+
+        const newRow = document.createElement('tr')
+
+        const tdImage = document.createElement('td')
+        tdImage.innerHTML = `<img src=${imgUrl} alt="smartphone" height="200" />`
+        const tdProduct = document.createElement('td')
+        tdProduct.innerText = productName
+        const tdQuantity = document.createElement('td')
+        tdQuantity.innerText = quantity
+        const tdPrice = document.createElement('td')
+        tdPrice.innerText = price + '€'
+
+        newRow.appendChild(tdImage)
+        newRow.appendChild(tdProduct)
+        newRow.appendChild(tdQuantity)
+        newRow.appendChild(tdPrice)
+        table.appendChild(newRow)
       }
 
-      addRow()
+      addRow(
+        'https://data.wikomobile.com/documents/images/IT/dbd2f986d94529fc20c0864e2c5c978c.jpg',
+        'Wiko',
+        10,
+        200
+      )
 
       /* ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
@@ -347,7 +305,7 @@
 
       hideAllImages()
 
-      /* EXTRA ESERCIZIO 15 CONTROLLARE!!!!!
+      /* EXTRA ESERCIZIO 15 
         Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
       */
 
